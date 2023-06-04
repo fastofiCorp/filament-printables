@@ -8,10 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class FilamentPrintable extends Model
 {
-
-
     use SoftDeletes;
-    use HasFactory;
+
 
     public function __construct()
     {
@@ -23,12 +21,14 @@ class FilamentPrintable extends Model
         'slug',
         'name',
         'type',
-        'view',
+        'template_view',
         'linked_resources',
+        'format',
     ];
 
     protected $casts = [
         'linked_resources' => 'array',
+        'format' => 'array',
     ];
 
     public function getRouteKeyName()

@@ -14,11 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create(config('filament-printables.table'), function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id('id');
             $table->string('slug')->unique();
             $table->string('name');
             $table->enum('type', ['report', 'form', 'label']);
-            $table->text('view');
+            $table->text('template_view');
+            $table->json('format')->nullable();
             $table->json('linked_resources')->nullable();
             $table->timestamps();
             $table->softDeletes();

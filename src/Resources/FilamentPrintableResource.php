@@ -18,6 +18,7 @@ use FastofiCorp\FilamentPrintables\Resources\FilamentPrintableResource\Pages;
 use FastofiCorp\FilamentPrintables\Resources\FilamentPrintableResource\RelationManagers;
 
 
+
 class FilamentPrintableResource extends Resource
 {
     protected static ?string $model = FilamentPrintable::class;
@@ -61,12 +62,21 @@ class FilamentPrintableResource extends Resource
                             ->required()
                             ->unique(FilamentPrintable::class, 'slug', ignoreRecord: true),
                         Forms\Components\Select::make('type')
+                            ->required()
                             ->label(__('filament-printables::filament-printables.resource.fields.type.label'))
                             ->options([
                                 'report' => __('filament-printables::filament-printables.resource.fields.type.options.report'),
                                 'form' => __('filament-printables::filament-printables.resource.fields.type.options.form'),
                                 'label' => __('filament-printables::filament-printables.resource.fields.type.options.label'),
                             ]),
+                        Forms\Components\Select::make('format')
+                            ->required()
+                            ->label(__('filament-printables::filament-printables.resource.fields.format.label'))
+                            ->options([
+                                'pdf' => 'PDF',
+                                'xlsx' => 'XLSX',
+                            ])
+                            ->multiple(),
                         Forms\Components\Select::make('linked_resources')
                             ->multiple()
                             ->required()
@@ -94,16 +104,39 @@ class FilamentPrintableResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->label(__('filament-printables::filament-printables.resource.fields.name.label'))
+                    ->sortable()
+                    ->wrap()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('slug')
+                    ->label(__('filament-printables::filament-printables.resource.fields.slug.label'))
+                    ->sortable()
+                    ->searchable()
+                    ->wrap(),
+                Tables\Columns\TextColumn::make('type')
+                    ->label(__('filament-printables::filament-printables.resource.fields.type.label'))
+                    ->sortable()
+                    ->enum([
+                        'report' => __('filament-printables::filament-printables.resource.fields.type.options.report'),
+                        'form' => __('filament-printables::filament-printables.resource.fields.type.options.form'),
+                        'label' => __('filament-printables::filament-printables.resource.fields.type.options.label'),
+                    ])
+                    ->searchable()
+                    ->wrap(),
+
             ])
-            ->filters([
-                //
-            ])
+            ->filters([])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ForceDeleteAction::make(),
+                Tables\Actions\RestoreAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\ForceDeleteBulkAction::make(),
+                Tables\Actions\RestoreBulkAction::make(),
             ]);
     }
 
@@ -114,6 +147,7 @@ class FilamentPrintableResource extends Resource
             //
         ];
     }
+
 
     public static function getPages(): array
     {
