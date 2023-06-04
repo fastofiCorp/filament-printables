@@ -20,7 +20,7 @@
         "spatie/laravel-package-tools": "^1.14.0",
         "illuminate/contracts": "^10.0",
         "filament/filament": "^2.0",
-        "barryvdh/laravel-dompdf": "^2.0",
+        "barryvdh/laravel-dompdf": "^2.0"
 
     },
     "require-dev": {
