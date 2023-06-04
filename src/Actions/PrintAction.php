@@ -2,19 +2,18 @@
 
 namespace FastofiCorp\FilamentPrintables\Actions;
 
-use Closure;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Filament\Tables\Actions\Action;
-use Spatie\Browsershot\Browsershot;
-use Filament\Forms\Components\Select;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Database\Eloquent\Model;
-use Filament\Notifications\Notification;
+use Closure;
 use FastofiCorp\FilamentPrintables\Models\FilamentPrintable;
+use Filament\Forms\Components\Select;
+use Filament\Notifications\Notification;
+use Filament\Tables\Actions\Action;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Blade;
 
 class PrintAction extends Action
 {
-    protected string|Closure|null $icon = "heroicon-o-printer";
+    protected string|Closure|null $icon = 'heroicon-o-printer';
 
     public static function make(?string $name = 'print'): static
     {
@@ -34,7 +33,7 @@ class PrintAction extends Action
 
     protected function handle(Model $record, array $data)
     {
-        if (!isset($data['printable'])) {
+        if (! isset($data['printable'])) {
             Notification::make('')->danger()
                 ->title(__('filament-printables::filament-printables.resource.notifications.no-template.title'))
                 ->body(__('filament-printables::filament-printables.resource.notifications.no-template.description'))
@@ -46,7 +45,7 @@ class PrintAction extends Action
                 echo Pdf::loadHtml(
                     Blade::render($printable->template_view, ['record' => $record], deleteCachedView: true)
                 )->stream();
-            }, $printable->slug . '-' . $record->id . '.pdf');
+            }, $printable->slug.'-'.$record->id.'.pdf');
         }
     }
 
@@ -71,12 +70,12 @@ class PrintAction extends Action
                         $options = [];
                         if ($get('printable') != '') {
                             collect(FilamentPrintable::find($get('printable'))?->format)->map(function ($format) use (&$options) {
-                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.' . $format);
+                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.'.$format);
                             });
                         }
 
                         return $options;
-                    })
+                    }),
 
             ];
         } else {
