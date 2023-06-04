@@ -13,7 +13,6 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Support\Str;
 
-
 class FilamentPrintableResource extends Resource
 {
     protected static ?string $model = FilamentPrintable::class;
@@ -140,7 +139,6 @@ class FilamentPrintableResource extends Resource
             //
         ];
     }
-
 
     public static function getPages(): array
     {
