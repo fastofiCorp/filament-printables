@@ -27,9 +27,4 @@ class FilamentPrintable extends Model
         'linked_resources' => 'array',
         'format' => 'array',
     ];
-
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
 }
