@@ -21,7 +21,8 @@
         "illuminate/contracts": "^10.0",
         "barryvdh/laravel-dompdf": "^2.0",
         "ticketpark/htmlphpexcel": "^1.0",
-        "filament/filament": "^2.0"
+        "filament/filament": "^2.0",
+        "livewire/livewire": "^2.3"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
