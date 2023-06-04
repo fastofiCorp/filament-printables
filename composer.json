@@ -1,6 +1,7 @@
 {
     "name": "fastofi-corp/filament-printables",
     "description": "A package to generate reports and form printables for your app",
+    "version": "1.0.0",
     "keywords": [
         "FastOfi Corp",
         "laravel",
