@@ -2,7 +2,6 @@
 
 namespace FastofiCorp\FilamentPrintables\Tests;
 
-use FastofiCorp\FilamentPrintables\FilamentPrintablesServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
