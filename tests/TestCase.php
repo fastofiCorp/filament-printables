@@ -3,7 +3,6 @@
 namespace FastofiCorp\FilamentPrintables\Tests;
 
 use FastofiCorp\FilamentPrintables\FilamentPrintablesServiceProvider;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -24,7 +23,7 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testing');
 
-        $migration = include __DIR__ . '/../database/migrations/create_FilamentPrintables_table.php.stub';
+        $migration = include __DIR__.'/../database/migrations/create_FilamentPrintables_table.php.stub';
         $migration->up();
     }
 }
