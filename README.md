@@ -33,7 +33,20 @@ php artisan vendor:publish --tag="filament-printables-config"
 
 ## Usage
 
-Work in progress
+### Create Templates in the Templates Resource
+Work in Progress
+
+### Use the Buttons in your tables
+To use the button in your table, just add the following lines:
+```php
+
+// For Single Actions
+FastofiCorp\FilamentPrintables\Actions\PrintAction::make(),
+
+// For Bulk Actions
+FastofiCorp\FilamentPrintables\Actions\BulksPrintAction::make(),
+```
+Feel free to use all the actions methods for Filament Actions (we suggest not to override 'action()' and 'forms()' methods because this is where the plugin works).
 
 ## Testing
 
