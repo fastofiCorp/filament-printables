@@ -11,7 +11,7 @@ class FilamentPrintable extends Model
 
     public function __construct()
     {
-        $this->setTable(config('filament-printables.table'));
+        $this->setTable(config('filament-printables.table', 'printables'));
     }
 
     protected $fillable = [

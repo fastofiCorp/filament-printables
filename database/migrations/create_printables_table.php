@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create(config('filament-printables.table'), function (Blueprint $table) {
+        Schema::create(config('filament-printables.table', 'printables'), function (Blueprint $table) {
             $table->id('id');
             $table->string('slug')->unique();
             $table->string('name');
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('filament-printables.table'));
+        Schema::dropIfExists(config('filament-printables.table', 'printables'));
     }
 };
