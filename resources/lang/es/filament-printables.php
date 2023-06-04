@@ -11,7 +11,6 @@ return [
     |
     */
 
-
     'resource.label.template' => 'Plantilla',
     'resource.label.templates' => 'Plantillas',
     'resource.tables.empty-state' => 'No hay plantillas',
@@ -40,6 +39,5 @@ return [
     'resource.fields.format.options.xlsx' => 'XLSX',
 
     'resource.fields.linked_resources.label' => 'Recursos vinculados',
-
 
 ];
