@@ -10,7 +10,7 @@ use Filament\Notifications\Notification;
 use Filament\Tables\Actions\Action;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
-use Ticketpark\HtmlPhpExcel\HtmlPhpExcel;
+use \Ticketpark\HtmlPhpExcel\HtmlPhpExcel;
 
 class PrintAction extends Action
 {
@@ -34,34 +34,35 @@ class PrintAction extends Action
 
     protected function handle(Model $record, array $data)
     {
-        if (! isset($data['printable'])) {
+        if (!isset($data['printable'])) {
             Notification::make('')->danger()
                 ->title(__('filament-printables::filament-printables.resource.notifications.no-template.title'))
                 ->body(__('filament-printables::filament-printables.resource.notifications.no-template.description'))
                 ->send();
         } else {
             $printable = FilamentPrintable::find($data['printable']);
+            if ($printable) {
+                switch ($data['format']) {
+                    case 'pdf':
 
-            switch ($data['format']) {
-                case 'pdf':
+                        return response()->streamDownload(function () use ($printable, $record) {
+                            echo Pdf::loadHtml(
+                                Blade::render($printable->template_view, ['record' => $record], deleteCachedView: true)
+                            )->stream();
+                        }, $printable->slug . '-' . $record->id . '.pdf');
 
-                    return response()->streamDownload(function () use ($printable, $record) {
-                        echo Pdf::loadHtml(
-                            Blade::render($printable->template_view, ['record' => $record], deleteCachedView: true)
-                        )->stream();
-                    }, $printable->slug.'-'.$record->id.'.pdf');
+                        break;
 
-                    break;
+                    case 'xlsx':
 
-                case 'xlsx':
+                        return response()->streamDownload(function () use ($printable, $record) {
 
-                    return response()->streamDownload(function () use ($printable, $record) {
+                            $htmlPhpExcel = new HtmlPhpExcel(Blade::render($printable->template_view, ['record' => $record], deleteCachedView: true));
+                            echo $htmlPhpExcel->process()->output();
+                        }, $printable->slug . '-' . $record->id . '.xlsx');
 
-                        $htmlPhpExcel = new HtmlPhpExcel(Blade::render($printable->template_view, ['record' => $record], deleteCachedView: true));
-                        echo $htmlPhpExcel->process()->output();
-                    }, $printable->slug.'-'.$record->id.'.xlsx');
-
-                    break;
+                        break;
+                }
             }
         }
     }
@@ -87,7 +88,7 @@ class PrintAction extends Action
                         $options = [];
                         if ($get('printable') != '') {
                             collect(FilamentPrintable::find($get('printable'))?->format)->map(function ($format) use (&$options) {
-                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.'.$format);
+                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.' . $format);
                             });
                         }
 
