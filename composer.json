@@ -1,7 +1,6 @@
 {
     "name": "fastofi-corp/filament-printables",
     "description": "A package to generate reports and form printables for your app",
-    "version": "1.0.0",
     "keywords": [
         "FastOfi Corp",
         "laravel",
@@ -21,7 +20,8 @@
         "spatie/laravel-package-tools": "^1.14.0",
         "illuminate/contracts": "^10.0",
         "filament/filament": "^2.0",
-        "barryvdh/laravel-dompdf": "^2.0"
+        "barryvdh/laravel-dompdf": "^2.0",
+        "ticketpark/htmlphpexcel": "^1.0"
 
     },
     "require-dev": {
