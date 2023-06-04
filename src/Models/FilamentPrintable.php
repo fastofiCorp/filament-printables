@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class FilamentPrintable extends Model
 {
-
-
     use SoftDeletes;
     use HasFactory;
 
@@ -17,7 +15,6 @@ class FilamentPrintable extends Model
     {
         $this->setTable(config('filament-printables.table'));
     }
-
 
     protected $fillable = [
         'slug',

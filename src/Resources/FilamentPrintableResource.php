@@ -3,20 +3,15 @@
 namespace FastofiCorp\FilamentPrintables\Resources;
 
 use Closure;
-use Filament\Forms;
-use Filament\Tables;
-use Illuminate\Support\Str;
-use Filament\Resources\Form;
-use Filament\Resources\Table;
-use Filament\Facades\Filament;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\Tabs;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use FastofiCorp\FilamentPrintables\Models\FilamentPrintable;
 use FastofiCorp\FilamentPrintables\Resources\FilamentPrintableResource\Pages;
-use FastofiCorp\FilamentPrintables\Resources\FilamentPrintableResource\RelationManagers;
-
+use Filament\Facades\Filament;
+use Filament\Forms;
+use Filament\Resources\Form;
+use Filament\Resources\Resource;
+use Filament\Resources\Table;
+use Filament\Tables;
+use Illuminate\Support\Str;
 
 class FilamentPrintableResource extends Resource
 {
@@ -33,8 +28,6 @@ class FilamentPrintableResource extends Resource
     {
         return __('filament-printables::filament-printables.resource.label.templates');
     }
-
-
 
     public static function form(Form $form): Form
     {
@@ -74,19 +67,20 @@ class FilamentPrintableResource extends Resource
                                 $subjects = [];
                                 $exceptResources = [...config('filament-printables.resources.exclude'), self::class];
                                 $removedExcludedResources = collect(Filament::getResources())->filter(function ($resource) use ($exceptResources) {
-                                    return !in_array($resource, $exceptResources);
+                                    return ! in_array($resource, $exceptResources);
                                 });
 
                                 foreach ($removedExcludedResources as $resource) {
                                     $model = $resource::getModel();
                                     $subjects[$model] = Str::of(class_basename($model))->headline();
                                 }
+
                                 return $subjects;
                             })
-                            ->label(__('filament-printables::filament-printables.resource.fields.linked_resources.label'))
+                            ->label(__('filament-printables::filament-printables.resource.fields.linked_resources.label')),
 
                     ])
-                    ->columnSpan(['lg' => 1])
+                    ->columnSpan(['lg' => 1]),
             ])->columns(3);
     }
 
@@ -106,7 +100,6 @@ class FilamentPrintableResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-
 
     public static function getRelations(): array
     {

@@ -31,7 +31,6 @@ return [
     'resource.label.templates' => 'Plantillas',
     'resource.tables.empty-state' => 'No hay plantillas',
 
-
     'resource.fields.name.label' => 'Nombre',
     'resource.fields.slug.label' => 'Slug',
     'resource.fields.type.label' => 'Tipo',
@@ -45,8 +44,6 @@ return [
     'resource.section.settings' => 'Configuración',
 
     'resource.fields.linked_resources.label' => 'Recursos vinculados',
-
-
 
     'delete.confirm' => 'Sure?',
     /*
