@@ -11,10 +11,6 @@ class TestCase extends Orchestra
     protected function setUp(): void
     {
         parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'FastofiCorp\\FilamentPrintables\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
     }
 
     protected function getPackageProviders($app)
@@ -28,9 +24,7 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testing');
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_FilamentPrintables_table.php.stub';
+        $migration = include __DIR__ . '/../database/migrations/create_FilamentPrintables_table.php.stub';
         $migration->up();
-        */
     }
 }
