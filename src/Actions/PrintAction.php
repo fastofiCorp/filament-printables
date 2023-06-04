@@ -34,7 +34,7 @@ class PrintAction extends Action
 
     protected function handle(Model $record, array $data)
     {
-        if (! isset($data['printable'])) {
+        if (!isset($data['printable'])) {
             Notification::make('')->danger()
                 ->title(__('filament-printables::filament-printables.resource.notifications.no-template.title'))
                 ->body(__('filament-printables::filament-printables.resource.notifications.no-template.description'))
@@ -49,9 +49,8 @@ class PrintAction extends Action
                             echo Pdf::loadHtml(
                                 Blade::render($printable->template_view, ['record' => $record], deleteCachedView: true)
                             )->stream();
-                        }, $printable->slug.'-'.$record->id.'.pdf');
+                        }, $printable->slug . '-' . $record->id . '.pdf');
 
-                        break;
 
                     case 'xlsx':
 
@@ -59,9 +58,7 @@ class PrintAction extends Action
 
                             $htmlPhpExcel = new HtmlPhpExcel(Blade::render($printable->template_view, ['record' => $record], deleteCachedView: true));
                             echo $htmlPhpExcel->process()->output();
-                        }, $printable->slug.'-'.$record->id.'.xlsx');
-
-                        break;
+                        }, $printable->slug . '-' . $record->id . '.xlsx');
                 }
             }
         }
@@ -88,7 +85,7 @@ class PrintAction extends Action
                         $options = [];
                         if ($get('printable') != '') {
                             collect(FilamentPrintable::find($get('printable'))?->format)->map(function ($format) use (&$options) {
-                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.'.$format);
+                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.' . $format);
                             });
                         }
 
