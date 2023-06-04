@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "fastofi-corp/filament-printables",
+    "description": "A package to generate reports and form printables for your app",
     "keywords": [
-        ":vendor_name",
+        "FastOfi Corp",
         "laravel",
-        ":package_slug"
+        "filament-printables"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/FastofiCorp/filament-printables",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Alvaro León Torres",
+            "email": "alvaro.leon@FastofiCorp.com",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "FastofiCorp\\FilamentPrintables\\": "src/"
+
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/"
+            "FastofiCorp\\FilamentPrintables\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -61,10 +61,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "FastofiCorp\\FilamentPrintables\\FilamentPrintablesServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "FilamentPrintables": "FastofiCorp\\FilamentPrintables\\Facades\\FilamentPrintables"
             }
         }
     },
