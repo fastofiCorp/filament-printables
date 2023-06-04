@@ -4,28 +4,13 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Filament Bookmarks Menu
+    | Filament Printables
     |--------------------------------------------------------------------------
     |
     | All translateable strings goes into this file for this plugin
     |
     */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Menu labels
-    |--------------------------------------------------------------------------
-    */
-    'label.global' => 'Global',
-    'label.private' => 'Private',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Navigation & Resource
-    |--------------------------------------------------------------------------
-    */
-    'nav.label' => 'Bookmarks',
-    'nav.icon' => 'heroicon-o-bookmark',
 
     'resource.label.template' => 'Plantilla',
     'resource.label.templates' => 'Plantillas',
@@ -56,13 +41,5 @@ return [
 
     'resource.fields.linked_resources.label' => 'Recursos vinculados',
 
-    'delete.confirm' => 'Sure?',
-    /*
-    |--------------------------------------------------------------------------
-    | Notifications
-    |--------------------------------------------------------------------------
-    */
-    'notification.add' => 'Your bookmark has been added successfully!',
-    'notification.remove' => 'Your bookmark has been removed successfully!',
-    'notification.empty' => 'You don\'t have any bookmarks, add some first and click here again!',
+
 ];
