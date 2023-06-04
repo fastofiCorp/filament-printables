@@ -18,29 +18,22 @@
     "require": {
         "php": "^8.0",
         "spatie/laravel-package-tools": "^1.14.0",
-        "filament/filament": "^2.17",
         "illuminate/contracts": "^10.0",
         "barryvdh/laravel-dompdf": "^2.0",
-        "ticketpark/htmlphpexcel": "^1.0"
-
-
+        "ticketpark/htmlphpexcel": "^1.0",
+        "filament/filament": "^2.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
-        "nunomaduro/collision": "^6.0",
+        "nunomaduro/collision": "^7.9",
         "nunomaduro/larastan": "^2.0.1",
-        "orchestra/testbench": "^7.0",
-        "pestphp/pest": "^1.21",
+        "orchestra/testbench": "^8.0",
+        "pestphp/pest": "^2.0",
         "pestphp/pest-plugin-arch": "^2.0",
-        "filament/filament": "^2.0",
-        "pestphp/pest-plugin-laravel": "^1.1",
+        "pestphp/pest-plugin-laravel": "^2.0",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0",
-        "spatie/laravel-ray": "^1.26",
-        "spatie/browsershot": "^3.57",
-        "barryvdh/laravel-dompdf": "^2.0",
-        "ticketpark/htmlphpexcel": "^1.0"
+        "phpstan/phpstan-phpunit": "^1.0"
 
 
     },
