@@ -18,6 +18,7 @@
     "require": {
         "php": "^8.0",
         "spatie/laravel-package-tools": "^1.14.0",
+        "filament/filament": "^2.17",
         "illuminate/contracts": "^10.0",
         "barryvdh/laravel-dompdf": "^2.0",
         "ticketpark/htmlphpexcel": "^1.0"
