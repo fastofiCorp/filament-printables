@@ -10,8 +10,6 @@ class EditFilamentPrintable extends EditRecord
 {
     protected static string $resource = FilamentPrintableResource::class;
 
-
-
     protected function getActions(): array
     {
         return [

@@ -2,17 +2,15 @@
 
 namespace FastofiCorp\FilamentPrintables;
 
+use FastofiCorp\FilamentPrintables\Resources\FilamentPrintableResource;
 use Filament\PluginServiceProvider;
 use Spatie\LaravelPackageTools\Package;
-use FastofiCorp\FilamentPrintables\Resources\FilamentPrintableResource;
 
 class FilamentPrintablesServiceProvider extends PluginServiceProvider
 {
-
     protected array $resources = [
         FilamentPrintableResource::class,
     ];
-
 
     public function configurePackage(Package $package): void
     {

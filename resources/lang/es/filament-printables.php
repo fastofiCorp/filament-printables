@@ -31,7 +31,6 @@ return [
     'resource.label.templates' => 'Plantillas',
     'resource.tables.empty-state' => 'No hay plantillas',
 
-
     'resource.fields.name.label' => 'Nombre',
     'resource.fields.slug.label' => 'Slug',
     'resource.fields.type.label' => 'Tipo',
@@ -56,8 +55,6 @@ return [
     'resource.fields.format.options.xlsx' => 'XLSX',
 
     'resource.fields.linked_resources.label' => 'Recursos vinculados',
-
-
 
     'delete.confirm' => 'Sure?',
     /*

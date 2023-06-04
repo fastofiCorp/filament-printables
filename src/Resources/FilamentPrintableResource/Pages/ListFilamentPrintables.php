@@ -15,7 +15,6 @@ class ListFilamentPrintables extends ListRecords
         return __('filament-printables::filament-printables.resource.tables.empty-state');
     }
 
-
     protected function getActions(): array
     {
         return [

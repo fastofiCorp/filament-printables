@@ -16,7 +16,6 @@ class FilamentPrintable extends Model
         $this->setTable(config('filament-printables.table'));
     }
 
-
     protected $fillable = [
         'slug',
         'name',
