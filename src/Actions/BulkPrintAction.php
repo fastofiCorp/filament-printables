@@ -1,6 +1,6 @@
 <?php
 
-namespace FastofiCorp\FilamentPrintables;
+namespace FastofiCorp\FilamentPrintables\Actions;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Closure;
@@ -59,8 +59,6 @@ class BulkPrintAction extends BulkAction
                             $htmlPhpExcel = new HtmlPhpExcel(Blade::render($printable?->template_view, ['records' => $records], deleteCachedView: true));
                             echo $htmlPhpExcel?->process()->output();
                         }, $printable?->slug . '-' . date('Y-m-d H:i:s') . '.xlsx');
-
-                     
                 }
             }
         }
