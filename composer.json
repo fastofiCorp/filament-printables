@@ -15,6 +15,7 @@
             "role": "Developer"
         }
     ],
+    "version": "1.0.3",
 
     "require": {
         "php": "^8.1",
