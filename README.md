@@ -1,20 +1,20 @@
 # Filament Printables: a package to generate reports and form printables for your app.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/fastofi-corp/filament-printables.svg?style=flat-square)](https://packagist.org/packages/fastofi-corp/filament-printables)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/fastofi-corp/filament-printables/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/fastofi-corp/filament-printables/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/fastofi-corp/filament-printables/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/fastofi-corp/filament-printables/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/fastofi-corp/filament-printables.svg?style=flat-square)](https://packagist.org/packages/fastofi-corp/filament-printables)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/fastoficorp/filament-printables.svg?style=flat-square)](https://packagist.org/packages/fastoficorp/filament-printables)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/fastoficorp/filament-printables/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/fastoficorp/filament-printables/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/fastoficorp/filament-printables/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/fastoficorp/filament-printables/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/fastoficorp/filament-printables.svg?style=flat-square)](https://packagist.org/packages/fastoficorp/filament-printables)
+
 <!--delete-->
 
 This is a work in progress thing
-
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require fastofi-corp/filament-printables
+composer require fastoficorp/filament-printables
 ```
 
 You can publish and run the migrations with:
@@ -30,14 +30,16 @@ You can publish the config file with:
 php artisan vendor:publish --tag="filament-printables-config"
 ```
 
-
 ## Usage
 
 ### Create Templates in the Templates Resource
+
 Work in Progress
 
 ### Use the Buttons in your tables
+
 To use the button in your table, just add the following lines:
+
 ```php
 
 // For Single Actions
@@ -46,6 +48,7 @@ FastofiCorp\FilamentPrintables\Actions\PrintAction::make(),
 // For Bulk Actions
 FastofiCorp\FilamentPrintables\Actions\BulksPrintAction::make(),
 ```
+
 Feel free to use all the actions methods for Filament Actions (we suggest not to override 'action()' and 'forms()' methods because this is where the plugin works).
 
 ## Testing
@@ -66,8 +69,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Alvaro León Torres](https://github.com/alvleont)
-- [All Contributors](../../contributors)
+-   [Alvaro León Torres](https://github.com/alvleont)
+-   [All Contributors](../../contributors)
 
 ## License
 

@@ -4,9 +4,9 @@ namespace FastofiCorp\FilamentPrintables\Commands;
 
 use Illuminate\Console\Command;
 
-class FilamentPrintablesCommand extends Command
+class filament-printablesCommand extends Command
 {
-    public $signature = 'FilamentPrintables';
+    public $signature = 'filament-printables';
 
     public $description = 'My command';
 

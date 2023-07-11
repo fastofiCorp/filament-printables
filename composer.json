@@ -1,5 +1,5 @@
 {
-    "name": "fastofi-corp/filament-printables",
+    "name": "fastoficorp/filament-printables",
     "description": "A package to generate reports and form printables for your app",
     "keywords": [
         "FastOfi Corp",
@@ -42,13 +42,13 @@
 
     "autoload": {
         "psr-4": {
-            "FastofiCorp\\FilamentPrintables\\": "src/"
+            "FastofiCorp\\filament-printables\\": "src/"
 
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "FastofiCorp\\FilamentPrintables\\Tests\\": "tests/"
+            "FastofiCorp\\filament-printables\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -68,13 +68,13 @@
     "extra": {
         "laravel": {
             "providers": [
-                "FastofiCorp\\FilamentPrintables\\FilamentPrintablesServiceProvider"
+                "FastofiCorp\\filament-printables\\filament-printablesServiceProvider"
             ],
             "aliases": {
-                "FilamentPrintables": "FastofiCorp\\FilamentPrintables\\Facades\\FilamentPrintables"
+                "filament-printables": "FastofiCorp\\filament-printables\\Facades\\filament-printables"
             }
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "beta",
     "prefer-stable": true
 }
