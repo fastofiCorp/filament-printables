@@ -10,6 +10,7 @@ return [
     'resource.fields.slug.label' => 'Slug',
     'resource.fields.type.label' => 'Typ',
     'resource.fields.view.label' => 'Vy',
+    'resource.fields.template_view.label' => 'Mallvy',
     'resource.fields.template.label' => 'Mall',
     'resource.fields.template.placeholder' => 'Välj en mall',
 

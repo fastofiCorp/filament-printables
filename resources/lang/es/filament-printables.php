@@ -15,11 +15,13 @@ return [
     'resource.label.templates' => 'Plantillas',
     'resource.tables.empty-state' => 'No hay plantillas',
 
+
     'resource.fields.name.label' => 'Nombre',
     'resource.fields.slug.label' => 'Slug',
     'resource.fields.type.label' => 'Tipo',
     'resource.fields.view.label' => 'Vista',
     'resource.fields.template.label' => 'Plantilla',
+    'resource.fields.template_view.label' => 'Vista de plantilla',
     'resource.fields.template.placeholder' => 'Selecciona una plantilla',
 
     'resource.fields.type.options.report' => 'Reporte',

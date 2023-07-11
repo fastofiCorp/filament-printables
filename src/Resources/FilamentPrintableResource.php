@@ -36,6 +36,7 @@ class FilamentPrintableResource extends Resource
                 Forms\Components\Section::make(__('filament-printables::filament-printables.resource.section.view'))
                     ->schema([
                         Forms\Components\MarkdownEditor::make('template_view')
+                            ->label(__('filament-printables::filament-printables.resource.fields.template_view.label'))
                             ->columnSpan('full'),
                     ])
                     ->columnSpan(['lg' => 2]),
@@ -76,7 +77,7 @@ class FilamentPrintableResource extends Resource
                                 $subjects = [];
                                 $exceptResources = [...config('filament-printables.resources.exclude'), self::class];
                                 $removedExcludedResources = collect(Filament::getResources())->filter(function ($resource) use ($exceptResources) {
-                                    return ! in_array($resource, $exceptResources);
+                                    return !in_array($resource, $exceptResources);
                                 });
 
                                 foreach ($removedExcludedResources as $resource) {

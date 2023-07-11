@@ -10,6 +10,7 @@ return [
     'resource.fields.slug.label' => 'Slug',
     'resource.fields.type.label' => 'Type',
     'resource.fields.view.label' => 'Vue',
+    'resource.fields.template_view.label' => 'Vue du modèle',
     'resource.fields.template.label' => 'Modèle',
     'resource.fields.template.placeholder' => 'Sélectionnez un modèle',
 

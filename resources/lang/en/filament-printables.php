@@ -10,6 +10,7 @@ return [
     'resource.fields.slug.label' => 'Slug',
     'resource.fields.type.label' => 'Type',
     'resource.fields.view.label' => 'View',
+    'resource.fields.template_view.label' => 'Template View',
     'resource.fields.template.label' => 'Template',
     'resource.fields.template.placeholder' => 'Select a template',
 
