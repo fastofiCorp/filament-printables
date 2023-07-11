@@ -77,7 +77,7 @@ class FilamentPrintableResource extends Resource
                                 $subjects = [];
                                 $exceptResources = [...config('filament-printables.resources.exclude'), self::class];
                                 $removedExcludedResources = collect(Filament::getResources())->filter(function ($resource) use ($exceptResources) {
-                                    return !in_array($resource, $exceptResources);
+                                    return ! in_array($resource, $exceptResources);
                                 });
 
                                 foreach ($removedExcludedResources as $resource) {
