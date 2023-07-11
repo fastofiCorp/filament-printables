@@ -1,17 +1,17 @@
 {
-    "name": "fastoficorp/filament-printables",
+    "name": "fastofi-corp/filament-printables",
     "description": "A package to generate reports and form printables for your app",
     "keywords": [
-        "FastOfi Corp",
+        "fastOfiCorp",
         "laravel",
         "filament-printables"
     ],
-    "homepage": "https://github.com/FastofiCorp/filament-printables",
+    "homepage": "https://github.com/fastofiCorp/filament-printables",
     "license": "MIT",
     "authors": [
         {
             "name": "Alvaro León Torres",
-            "email": "alvaro.leon@FastofiCorp.com",
+            "email": "alvaro.leon@fastoficorp.com",
             "role": "Developer"
         }
     ],
@@ -68,10 +68,10 @@
                 "FastofiCorp\\FilamentPrintables\\FilamentPrintablesServiceProvider"
             ],
             "aliases": {
-                "filament-printables": "FastofiCorp\\FilamentPrintables\\Facades\\FilamentPrintables"
+                "FilamentPrintables": "FastofiCorp\\FilamentPrintables\\Facades\\FilamentPrintables"
             }
         }
     },
-    "minimum-stability": "beta",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
