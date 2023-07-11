@@ -41,24 +41,24 @@ class BulkPrintAction extends BulkAction
                 ->send();
         } else {
             $printable = FilamentPrintable::find($data['printable']);
-            if ($printable) {
+            if ($printable !== null) {
                 switch ($data['format']) {
                     case 'pdf':
 
                         return response()->streamDownload(function () use ($printable, $records) {
                             echo Pdf::loadHtml(
-                                Blade::render($printable?->template_view, ['records' => $records], deleteCachedView: true)
+                                Blade::render($printable->template_view, ['records' => $records], deleteCachedView: true)
                             )->stream();
-                        }, $printable?->slug . '-' . date('Y-m-d H:i:s') . '.pdf');
+                        }, $printable->slug . '-' . date('Y-m-d H:i:s') . '.pdf');
 
 
 
                     case 'xlsx':
 
                         return response()->streamDownload(function () use ($printable, $records) {
-                            $htmlPhpExcel = new HtmlPhpExcel(Blade::render($printable?->template_view, ['records' => $records], deleteCachedView: true));
-                            echo $htmlPhpExcel?->process()->output();
-                        }, $printable?->slug . '-' . date('Y-m-d H:i:s') . '.xlsx');
+                            $htmlPhpExcel = new HtmlPhpExcel(Blade::render($printable->template_view, ['records' => $records], deleteCachedView: true));
+                            echo $htmlPhpExcel->process()->output();
+                        }, $printable->slug . '-' . date('Y-m-d H:i:s') . '.xlsx');
                 }
             }
         }
