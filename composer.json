@@ -65,10 +65,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "FastofiCorp\\filament-printables\\filament-printablesServiceProvider"
+                "FastofiCorp\\FilamentPrintables\\FilamentPrintablesServiceProvider"
             ],
             "aliases": {
-                "filament-printables": "FastofiCorp\\filament-printables\\Facades\\filament-printables"
+                "filament-printables": "FastofiCorp\\FilamentPrintables\\Facades\\FilamentPrintables"
             }
         }
     },
