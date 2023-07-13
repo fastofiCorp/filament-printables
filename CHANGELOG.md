@@ -2,6 +2,10 @@
 
 All notable changes to `Filament Printables` will be documented in this file.
 
+## v1.0.2 - 2023-07-13
+
+Adding functionality to PrintInput, a printable button to be used in forms.
+
 ## v1.0.1 - 2023-07-13
 
 **Full Changelog**: https://github.com/fastofiCorp/filament-printables/compare/v1.0.0...v1.0.1
