@@ -2,19 +2,17 @@
 
 namespace FastofiCorp\FilamentPrintables\Actions;
 
-use Closure;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Filament\Forms\Components\Select;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Database\Eloquent\Model;
-use Filament\Notifications\Notification;
-use Ticketpark\HtmlPhpExcel\HtmlPhpExcel;
-use Filament\Forms\Components\Actions\Action;
+use Closure;
 use FastofiCorp\FilamentPrintables\Models\FilamentPrintable;
+use Filament\Forms\Components\Actions\Action;
+use Filament\Forms\Components\Select;
+use Filament\Notifications\Notification;
+use Illuminate\Support\Facades\Blade;
+use Ticketpark\HtmlPhpExcel\HtmlPhpExcel;
 
 class PrintInput extends Action
 {
-
     protected string|Closure $format = '';
 
     protected int|Closure $printable = 0;
@@ -50,6 +48,7 @@ class PrintInput extends Action
     public function data(string|array|Closure $recordData): static
     {
         $this->recordData = $recordData;
+
         return $this;
     }
 
@@ -89,19 +88,19 @@ class PrintInput extends Action
                 switch ($this->format) {
                     case 'pdf':
 
-                        return response()->streamDownload(function () use ($printable, $record) {
+                        return response()->streamDownload(function () use ($printable) {
                             echo Pdf::loadHtml(
                                 Blade::render($printable->template_view, $this->recordData, deleteCachedView: true)
                             )->stream();
-                        }, $printable->slug . '.pdf');
+                        }, $printable->slug.'.pdf');
 
                     case 'xlsx':
 
-                        return response()->streamDownload(function () use ($printable, $record) {
+                        return response()->streamDownload(function () use ($printable) {
 
                             $htmlPhpExcel = new HtmlPhpExcel(Blade::render($printable->template_view, $this->recordData, deleteCachedView: true));
                             echo $htmlPhpExcel->process()->output();
-                        }, $printable->slug .  '.xlsx');
+                        }, $printable->slug.'.xlsx');
                 }
             }
         }
@@ -137,7 +136,7 @@ class PrintInput extends Action
                         $options = [];
                         if ($get('printable') != '') {
                             collect(FilamentPrintable::find($get('printable'))?->format)->map(function ($format) use (&$options) {
-                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.' . $format);
+                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.'.$format);
                             });
                         }
 
