@@ -18,6 +18,8 @@ class BulkPrintAction extends BulkAction
 
     protected int|Closure $printable = 0;
 
+    protected string|array|Closure $recordData = [];
+
     protected string|Closure|null $icon = 'heroicon-o-printer';
 
     public static function make(?string $name = 'print'): static
@@ -50,15 +52,28 @@ class BulkPrintAction extends BulkAction
         return $this;
     }
 
+    public function data(string|array|Closure $recordData): static
+    {
+        $this->recordData = $recordData;
+
+        return $this;
+    }
+
+
     protected function handle(Collection $records, array $data)
     {
+
+        if ($this->recordData != []) {
+            $record = $this->recordData;
+        }
+
         if (isset($data['printable'])) {
             $this->printable = $data['printable'];
         }
         if (isset($data['format'])) {
             $this->format = $data['format'];
         }
-        if (! isset($data['printable']) or $this->printable == 0) {
+        if (!isset($data['printable']) or $this->printable == 0) {
             Notification::make('')->danger()
                 ->title(__('filament-printables::filament-printables.resource.notifications.no-template.title'))
                 ->body(__('filament-printables::filament-printables.resource.notifications.no-template.description'))
@@ -74,14 +89,14 @@ class BulkPrintAction extends BulkAction
                             echo Pdf::loadHtml(
                                 Blade::render($printable->template_view, ['records' => $records], deleteCachedView: true)
                             )->stream();
-                        }, $printable->slug.'-'.date('Y-m-d H:i:s').'.pdf');
+                        }, $printable->slug . '-' . date('Y-m-d H:i:s') . '.pdf');
 
                     case 'xlsx':
 
                         return response()->streamDownload(function () use ($printable, $records) {
                             $htmlPhpExcel = new HtmlPhpExcel(Blade::render($printable->template_view, ['records' => $records], deleteCachedView: true));
                             echo $htmlPhpExcel->process()->output();
-                        }, $printable->slug.'-'.date('Y-m-d H:i:s').'.xlsx');
+                        }, $printable->slug . '-' . date('Y-m-d H:i:s') . '.xlsx');
                 }
             }
         }
@@ -112,7 +127,7 @@ class BulkPrintAction extends BulkAction
                         $options = [];
                         if ($get('printable') != '') {
                             collect(FilamentPrintable::find($get('printable'))?->format)->map(function ($format) use (&$options) {
-                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.'.$format);
+                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.' . $format);
                             });
                         }
 
