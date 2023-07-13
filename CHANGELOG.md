@@ -2,6 +2,10 @@
 
 All notable changes to `Filament Printables` will be documented in this file.
 
+## v1.0.0 - 2023-07-11
+
+The first working version if I discover how to put it into running.
+
 ## 1.0.0 - 2023-07-11
 
 ### What's Changed
