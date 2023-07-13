@@ -64,7 +64,7 @@ class BulkPrintAction extends BulkAction
     {
 
         if ($this->recordData != []) {
-            $record = $this->recordData;
+            $records = $this->recordData;
         }
 
         if (isset($data['printable'])) {
