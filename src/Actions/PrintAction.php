@@ -14,6 +14,12 @@ use Ticketpark\HtmlPhpExcel\HtmlPhpExcel;
 
 class PrintAction extends Action
 {
+
+    protected string | Closure $format = '';
+
+    protected int | Closure $printable = 0;
+
+
     protected string|Closure|null $icon = 'heroicon-o-printer';
 
     public static function make(?string $name = 'print'): static
@@ -32,24 +38,48 @@ class PrintAction extends Action
         $this->action($this->handle(...));
     }
 
+    public function format(string | Closure $format): static
+    {
+        $this->format = $format;
+
+        return $this;
+    }
+
+    public function printable(int | Closure $printable): static
+    {
+        $this->printable = $printable;
+
+        return $this;
+    }
+
     protected function handle(Model $record, array $data)
     {
-        if (! isset($data['printable'])) {
+        if (isset($data['printable'])) {
+            $this->printable = $data['printable'];
+        }
+        if (isset($data['format'])) {
+            $this->format = $data['format'];
+        }
+
+        if ($this->printable == 0) {
             Notification::make('')->danger()
                 ->title(__('filament-printables::filament-printables.resource.notifications.no-template.title'))
                 ->body(__('filament-printables::filament-printables.resource.notifications.no-template.description'))
                 ->send();
         } else {
-            $printable = FilamentPrintable::find($data['printable']);
+
+
+            $printable = FilamentPrintable::find($this->printable);
             if ($printable) {
-                switch ($data['format']) {
+
+                switch ($this->format) {
                     case 'pdf':
 
                         return response()->streamDownload(function () use ($printable, $record) {
                             echo Pdf::loadHtml(
                                 Blade::render($printable->template_view, ['record' => $record], deleteCachedView: true)
                             )->stream();
-                        }, $printable->slug.'-'.$record->id.'.pdf');
+                        }, $printable->slug . '-' . $record->id . '.pdf');
 
                     case 'xlsx':
 
@@ -57,7 +87,7 @@ class PrintAction extends Action
 
                             $htmlPhpExcel = new HtmlPhpExcel(Blade::render($printable->template_view, ['record' => $record], deleteCachedView: true));
                             echo $htmlPhpExcel->process()->output();
-                        }, $printable->slug.'-'.$record->id.'.xlsx');
+                        }, $printable->slug . '-' . $record->id . '.xlsx');
                 }
             }
         }
@@ -65,13 +95,20 @@ class PrintAction extends Action
 
     public function getFormSchema(): array
     {
-
+        //Get the printables linked to the resource
         $printables = FilamentPrintable::where('type', 'form')->whereJsonContains('linked_resources', $this->getModel())->get();
+
+        if ($this->printable != 0 and $this->format != '') {
+            return [];
+        }
+
         if ($printables->count() > 0) {
             return [
                 Select::make('printable')
                     ->label(__('filament-printables::filament-printables.resource.fields.template.label'))
                     ->options($printables->pluck('name', 'id')->toArray())
+                    ->default($this->printable != 0 ? $this->printable : null)
+                    ->disabled($this->printable != 0)
                     ->required()
                     ->reactive()
                     ->autofocus()
@@ -80,11 +117,13 @@ class PrintAction extends Action
                 Select::make('format')
                     ->label(__('filament-printables::filament-printables.resource.fields.format.label'))
                     ->required()
+                    ->default($this->format != '' ? $this->format : null)
+                    ->disabled($this->format != '')
                     ->options(function ($get) {
                         $options = [];
                         if ($get('printable') != '') {
                             collect(FilamentPrintable::find($get('printable'))?->format)->map(function ($format) use (&$options) {
-                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.'.$format);
+                                return $options[$format] = __('filament-printables::filament-printables.resource.fields.format.options.' . $format);
                             });
                         }
 
