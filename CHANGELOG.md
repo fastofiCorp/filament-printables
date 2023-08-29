@@ -2,6 +2,12 @@
 
 All notable changes to `Filament Printables` will be documented in this file.
 
+## v1.0.4 - 2023-08-29
+
+**Full Changelog**: https://github.com/fastofiCorp/filament-printables/compare/v1.0.2...v1.0.4
+
+I made a mistake into v1.0.3. Sorry for that.
+
 ## v1.0.3 - 2023-08-29
 
 **Full Changelog**: https://github.com/fastofiCorp/filament-printables/compare/v1.0.2...v1.0.3
