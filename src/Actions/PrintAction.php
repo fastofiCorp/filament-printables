@@ -18,7 +18,7 @@ class PrintAction extends Action
 
     protected int|Closure $printable = 0;
 
-    protected string $model = '';
+    protected Closure|string|null $model = '';
 
     protected string|array|Closure $recordData = [];
 
